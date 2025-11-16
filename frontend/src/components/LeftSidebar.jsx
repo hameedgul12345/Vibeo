@@ -92,13 +92,14 @@
 // export default LeftSidebar;
 
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector, } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FollowButton from "../components/FollowButton";
 import axios from "axios";
 import { serverURl } from "../App";
-
+import { clearUserData } from "../redux/userSlice";
 const LeftSidebar = () => {
+  const dispatch=useDispatch();
   const navigate = useNavigate();
   const { userData: user, suggestUsers: suggested } = useSelector((state) => state.user);
   
