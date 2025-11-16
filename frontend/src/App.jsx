@@ -179,7 +179,7 @@ import useGetUserStory from "./hooks/useGetUserStory";
 import { setOnlineUsers, setSockets } from "./redux/socketSlice";
 
 // export const serverURl = "http://localhost:5000";
-export const serverURl = "https://vibeo-ten.vercel.app";
+export const serverURl = "https://vibeo-ten.vercel.app"||"http://localhost:5000";
 
 function App() {
   const dispatch = useDispatch();

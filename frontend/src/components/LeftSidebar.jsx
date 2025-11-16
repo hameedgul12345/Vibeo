@@ -95,10 +95,30 @@ import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import FollowButton from "../components/FollowButton";
+import axios from "axios";
+import { serverURl } from "../App";
 
 const LeftSidebar = () => {
   const navigate = useNavigate();
   const { userData: user, suggestUsers: suggested } = useSelector((state) => state.user);
+  
+const signout = async () => {
+   alert("alert")
+  try {
+    await axios.post(
+      `${serverURl}/api/auth/signout`,
+      {},
+      { withCredentials: true }
+    );
+
+    dispatch(clearUserData()); // remove user from Redux
+    
+    navigate("/login"); // go to login page
+  } catch (error) {
+    console.log("Logout failed:", error);
+  }
+};
+
 
   useEffect(() => {
     // console.log("Sidebar user data:", user);
@@ -159,7 +179,8 @@ const LeftSidebar = () => {
       {/* Log Out */}
       <button
         className="mt-auto px-5 py-2 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-red-500 to-pink-500 shadow-lg hover:from-pink-500 hover:to-red-500 transition-all duration-300"
-      >
+        onClick={()=>signout()}
+     >
         Log Out
       </button>
     </div>
