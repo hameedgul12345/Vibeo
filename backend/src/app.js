@@ -16,9 +16,21 @@ dotenv.config();
 
 
 // ✅ CORS must come FIRST (before routes)
+// app.use(
+//   cors({
+//     origin:"http://localhost:5173",
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin:"http://localhost:5173",
+    origin: [
+      "https://vibeo1.netlify.app", // ✅ your Netlify frontend
+      "http://localhost:5173",             // ✅ keep this for local dev
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
   })
 );
