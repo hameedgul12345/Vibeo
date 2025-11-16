@@ -28,7 +28,8 @@ const EditProfile = () => {
     try {
       const formData = new FormData();
       formData.append("name", name);
-      formData.append("username", userName);
+    formData.append("userName", userName); // frontend
+
       formData.append("bio", bio);
       if (image) formData.append("profilePicture", image);
 

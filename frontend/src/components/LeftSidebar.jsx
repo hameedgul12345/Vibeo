@@ -104,7 +104,7 @@ const LeftSidebar = () => {
   const { userData: user, suggestUsers: suggested } = useSelector((state) => state.user);
   
 const signout = async () => {
-   alert("alert")
+  
   try {
     await axios.post(
       `${serverURl}/api/auth/signout`,
@@ -113,7 +113,7 @@ const signout = async () => {
     );
 
     dispatch(clearUserData()); // remove user from Redux
-    
+    console.log("logout success")
     navigate("/login"); // go to login page
   } catch (error) {
     console.log("Logout failed:", error);
