@@ -17,25 +17,8 @@
 // export default upload;
 
 
+
 import multer from "multer";
 
-// Use memory storage for serverless environments
-const storage = multer.memoryStorage();
-
-const upload = multer({ storage });
-
+const upload = multer({ storage: multer.memoryStorage() });
 export default upload;
-
-
-
-
-// import multer from "multer";
-
-// const storage = multer.memoryStorage(); // <— in-memory instead of disk
-
-// const upload = multer({
-//   storage,
-//   limits: { fileSize: 50 * 1024 * 1024 }, // 50MB limit
-// });
-
-// export default upload;

@@ -15,7 +15,7 @@ const postSlice = createSlice({
     },
     setAllPosts: (state, action) => {
       state.allPosts = action.payload;
-      console.log("📦 All Posts: jhkhjk", state.allPosts);
+      // console.log("📦 All Posts: jhkhjk", state.allPosts);
     },
   },
 });

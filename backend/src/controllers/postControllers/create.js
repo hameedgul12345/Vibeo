@@ -70,8 +70,9 @@ const create = async (req, res) => {
 
     // ✅ Check and upload file
     if (req.file) {
-      const uploadResult = await uploadOnCloudinary(req.file.path, req.file.mimetype);
+      const uploadResult = await uploadOnCloudinary(req.file.buffer, req.file.mimetype);
       mediaUrl = uploadResult.secure_url;
+      console.log(mediaUrl)
 
       // ✅ Auto-detect mediaType from mimetype if not sent by frontend
       if (!mediaType) {

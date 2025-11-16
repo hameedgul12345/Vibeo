@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 function RightSidebar() {
   const { onlineUsers } = useSelector((state) => state.socket);
   const { suggestUsers } = useSelector((state) => state.user);
-  console.log("online users'",onlineUsers)
+  // console.log("online users'",onlineUsers)
 
   // Show only online users
   const onlineOnly = suggestUsers.filter((user) =>

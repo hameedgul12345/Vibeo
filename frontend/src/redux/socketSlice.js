@@ -22,7 +22,7 @@ const socketSlice = createSlice({
 
     setOnlineUsers: (state, action) => {
       state.onlineUsers = action.payload; // array of user IDs
-      console.log("onlineusers", state.onlineUsers);
+      // console.log("onlineusers", state.onlineUsers);
     },
 
     addOnlineUser: (state, action) => {
