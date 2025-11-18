@@ -28,7 +28,7 @@ const createReel = async (req, res) => {
     console.log("📤 Uploading reel video to Cloudinary...");
 
     // ✅ Upload video to Cloudinary (handles large video files automatically)
-    const uploadResult = await uploadOnCloudinary(req.file.path, req.file.mimetype);
+    const uploadResult = await uploadOnCloudinary(req.file.buffer, req.file.mimetype);
 
     if (!uploadResult?.secure_url) {
       return res.status(500).json({ message: "Video upload failed" });
