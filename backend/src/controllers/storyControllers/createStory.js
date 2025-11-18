@@ -36,7 +36,7 @@ const createStory = async (req, res) => {
     console.log(`📤 Uploading ${mediaType} to Cloudinary...`);
 
     // ✅ Upload to Cloudinary
-    const uploadResult = await uploadOnCloudinary(req.file.path, req.file.mimetype);
+    const uploadResult = await uploadOnCloudinary(req.file.buffer, req.file.mimetype);
 
     if (!uploadResult?.secure_url) {
       return res.status(500).json({ message: "Failed to upload story media" });
