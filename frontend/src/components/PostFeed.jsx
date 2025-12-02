@@ -407,11 +407,13 @@ import {
   FaPlusSquare,
   FaUser,
   FaPaperPlane,
+  FaUsers,
 } from "react-icons/fa";
 import { SiYoutubeshorts } from "react-icons/si";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setAllPosts } from "../redux/postSlice";
+import Header from "./Header";
 
 const PostFeed = () => {
   const navigate = useNavigate();
@@ -508,11 +510,20 @@ const PostFeed = () => {
 
   return (
     <div className="w-full">
+      <Header/>
       {/* Story Carousel */}
-      <div className="flex z-10 overflow-x-auto space-x-4 scrollbar-hide p-4 bg-[#090F1B] md:w-[50%] md:fixed top-0 left-[25%]">
+      <div className="flex md:mt-0 mt-12 z-10 overflow-x-auto space-x-4 scrollbar-hide p-4 bg-[#090F1B] md:w-[50%] md:fixed top-0 left-[25%]">
         {/* User Stories */}
+         <div className="flex flex-col items-center w-16 cursor-pointer">
+              <div className="w-16 h-16 p-[2px] rounded-full bg-gray-600 flex items-center justify-center relative">
+                <div className="absolute bottom-0 right-0 w-5 h-5 bg-blue-600 text-white flex items-center justify-center rounded-full text-sm font-bold border-2 border-black">
+                  +
+                </div>
+              </div>
+              <p className="text-xs mt-1 text-gray-400 text-center truncate">Add Story</p>
+            </div>
         {userStory?.length > 0
-          ? userStory.map((uStory) => (
+          && userStory.map((uStory) => (
               <div
                 key={uStory._id}
                 onClick={() => navigate(`/story-viewer/${uStory._id}`)}
@@ -528,16 +539,7 @@ const PostFeed = () => {
                 <p className="text-xs mt-1 truncate text-center">{uStory.author?.name}</p>
               </div>
             ))
-          : (
-            <div className="flex flex-col items-center w-16 cursor-pointer">
-              <div className="w-16 h-16 p-[2px] rounded-full bg-gray-600 flex items-center justify-center relative">
-                <div className="absolute bottom-0 right-0 w-5 h-5 bg-blue-600 text-white flex items-center justify-center rounded-full text-sm font-bold border-2 border-black">
-                  +
-                </div>
-              </div>
-              <p className="text-xs mt-1 text-gray-400 text-center truncate">Add Story</p>
-            </div>
-          )}
+          }
 
         {/* All Stories */}
         {allStories?.map((story) => (
@@ -558,7 +560,7 @@ const PostFeed = () => {
       </div>
 
       {/* Posts Feed */}
-      <div className="flex flex-col items-center md:w-[100%] mt-36 pb-20">
+      <div className="flex flex-col items-center md:w-[100%] md:mt-36 pb-20">
         {allPosts?.length > 0 ? (
           allPosts.map((post) => {
             const displayedComments = [...(post.comments || []), ...(commentsData[post._id] || [])];
@@ -659,11 +661,13 @@ const PostFeed = () => {
       {/* Floating Bottom Nav */}
       <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-[90%] sm:w-[500px] bg-black/90 text-white flex justify-around items-center py-3 rounded-2xl shadow-2xl z-50 backdrop-blur-md">
         <FaHome className="cursor-pointer hover:text-gray-300 transition transform hover:scale-110" size={22} />
-        <FaSearch className="cursor-pointer hover:text-gray-300 transition transform hover:scale-110" size={22} />
+        <FaSearch className="cursor-pointer md:block hidden hover:text-gray-300 transition transform hover:scale-110" size={22} />
+        <FaUsers className="cursor-pointer md:hidden block hover:text-gray-300 transition transform hover:scale-110" size={22} onClick={() => navigate("/suggested-profiles")} />
         <FaPlusSquare className="cursor-pointer hover:text-gray-300 transition transform hover:scale-110" size={22} onClick={() => navigate("/upload-media")} />
         <SiYoutubeshorts className="cursor-pointer hover:text-gray-300 transition transform hover:scale-110" size={24} onClick={() => navigate("/reels")} />
         <FaUser className="cursor-pointer hover:text-gray-300 transition transform hover:scale-110" onClick={() => navigate("/profile")} size={22} />
       </div>
+      
     </div>
   );
 };
