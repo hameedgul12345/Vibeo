@@ -10,7 +10,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
  cors: {
     origin: [
-      // "https://vibeo1.netlify.app",
+      "https://vibeo1.netlify.app",
       "http://localhost:5173",
     ],
     methods: ["GET", "POST"],
