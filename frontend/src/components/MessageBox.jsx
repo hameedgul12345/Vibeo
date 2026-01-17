@@ -185,6 +185,7 @@ const MessageBox = () => {
   const { id } = useParams(); // target user id
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.message.messages);
+  console.log("new Messages", messages);
   const { sockets } = useSelector((state) => state.socket);
   const suggestUsers = useSelector((state) => state.user.suggestUsers);
   const selectedUser = suggestUsers.find((user) => user._id === id);
