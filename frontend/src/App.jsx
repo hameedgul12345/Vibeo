@@ -180,7 +180,7 @@ import { setOnlineUsers, setSockets } from "./redux/socketSlice";
 
 // For production, replace with your actual backend Vercel URL
 // export const serverURl = "http://localhost:5000";
-export const serverURl = process.env.REACT_APP_BACKEND_URL || "https://vibeo-api.vercel.app";
+export const serverURl = process.env.REACT_APP_BACKEND_URL || "https://vibeo-chi.vercel.app";
 
 function App() {
   const dispatch = useDispatch();
