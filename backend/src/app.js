@@ -60,6 +60,11 @@ app.get("/", (req, res) => {
   res.send("Social Media API running...");
 });
 
-// ✅ Start server
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// ✅ Export for Vercel serverless environment
+export default app;
+
+// ✅ Start server only in local development
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
